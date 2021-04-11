@@ -1,0 +1,18 @@
+{
+    "greetings": {
+        "inputs": ["hi", "hey", "hola", "bonjour", "hello"],
+        "responses": ["hi", "hey", "bonjour", "hello"]
+    },
+    "wakeAssistance": {
+        "inputs": ["hey", "ok"],
+        "responses": ["", "hello", "i'm hearing"]
+    },
+    "weathers": {
+        "hintWords": ["rain", "sun", "snow", "cold", "wind", "weather"],
+        "inputs": ["what's the weather", "what the weather", "it's gonna rain"]
+    },
+    "time": {
+        "hintWords": ["time", "hour"],
+        "inputs": ["what time is", "tell the time"]
+    }
+}

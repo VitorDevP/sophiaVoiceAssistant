@@ -1,10 +1,11 @@
 from speech import assistantResponse
-from voiceRecognize import recordAudio
+from voiceRecognize import listen
 from intents.intent import intentCall
 from tools.load import loadFile
-import playsound
+from tools.sounds import beep, beep2
 
 config = loadFile('config.json')
+STT = listen()
 
 def wakeWord(text):
     words = loadFile('models/dictionary.json')
@@ -21,17 +22,23 @@ def wakeWord(text):
 
     return False
 
-while True:
-    text = recordAudio()
-    responses = ''
+if __name__ == "__main__":
+    # assistantResponse("hello i'm {0}, i'm your voice assistant, you can call me with hey {0}, ok {0} or just call my name".format(config['assistant']['name']))
 
-    if wakeWord(text.lower()) == True:
-        try:
-            playsound.playsound('beep.mp3')
-            responses = responses + intentCall()
+    while True:
+        text = STT.listening()
+        
+        responses = ''
 
-            if len(responses) > 0:
-                assistantResponse(responses)
-            playsound.playsound('beep2.mp3')
-        except Exception as e:
-            responses = responses + ''
+        if wakeWord(text.lower()) == True:
+            try:
+                beep()
+    
+                responses = responses + intentCall()
+
+                if len(responses) > 0:
+                    assistantResponse(responses)
+                
+                beep2()
+            except Exception as e:
+                responses = responses + ''

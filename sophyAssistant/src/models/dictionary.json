@@ -14,5 +14,8 @@
     "time": {
         "hintWords": ["time", "hour"],
         "inputs": ["what time is", "tell the time"]
+    },
+    "assistant": {
+        "inputs": ["who are you", "what's your name"]
     }
 }
